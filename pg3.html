@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Growing and shrinking text</title>
+<script type = "text/javascript" >
+	function font()
+	{
+		msg1.style.color = "red";
+		msg1.style.fontSize = "5pt";
+		var i=0;
+		var grow_id = setInterval(grow,100);
+		var shrink_id;
+		function grow()
+		{	
+			document.getElementById('msg1').innerHTML = "TEXT GROWING";
+			if(msg1.style.fontSize == "50pt")
+				{
+					clearInterval(grow_id);
+					msg1.style.color = "blue";
+					shrink_id= setInterval(shrink,100);
+				}
+			else
+				{
+				msg1.style.fontSize = parseInt(msg1.style.fontSize)+i+"pt";
+				i++;
+				}
+		}
+		
+		function shrink()
+		{
+			i=0;
+			document.getElementById('msg1').innerHTML = "TEXT SHRINKING";
+			if(msg1.style.fontSize == "5pt")
+				{
+					clearInterval(shrink_id);
+				}
+			else
+				{
+				i=i-1;
+				msg1.style.fontSize = parseInt(msg1.style.fontSize)+i+"pt";
+				
+				}
+		}
+		
+	}
+
+</script>
+</head>
+<body onload = "font();">
+
+<div id = "msg1"></div>
+</body>
+</html>
